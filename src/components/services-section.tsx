@@ -32,7 +32,7 @@ export function ServicesSection() {
     <section id="services" className="mx-auto w-full max-w-6xl px-4 py-20 sm:px-6 sm:py-28">
       <p className="font-mono text-xs uppercase tracking-widest text-neutral-400">What we do</p>
       <h2 className="mt-3 max-w-xl text-3xl font-extrabold leading-tight text-black sm:text-4xl">
-        Services built for modern businesses
+        Services built for modern businesses.
       </h2>
 
       <div className="mt-12 grid grid-cols-1 border-l border-t border-black/10 sm:grid-cols-2">

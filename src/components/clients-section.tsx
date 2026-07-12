@@ -24,7 +24,7 @@ export function ClientsSection() {
     <section id="clients" className="mx-auto w-full max-w-6xl px-4 py-20 text-center sm:px-6 sm:py-28">
       <p className="font-mono text-xs uppercase tracking-widest text-neutral-400">Trusted by</p>
       <h2 className="mt-3 text-3xl font-extrabold leading-tight text-black sm:text-4xl">
-        Companies that trusted us
+        Companies that trusted us.
       </h2>
       <p className="mx-auto mt-4 max-w-md text-sm text-neutral-500">
         We&apos;ve had the privilege of partnering with great businesses. Hover on a logo to see
