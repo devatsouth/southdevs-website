@@ -16,7 +16,7 @@ const sourceCodePro = Source_Code_Pro({
   display: "swap",
 });
 
-const siteUrl = "https://southdevs.net";
+const siteUrl = "https://www.southdevs.net";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
