@@ -61,7 +61,7 @@ export function ContactForm() {
             placeholder="Juan dela Cruz"
           />
           {state.status === "invalid" && state.fieldErrors?.name && (
-            <p className="mt-1 text-xs text-red-500">{state.fieldErrors.name}</p>
+            <p className="mt-1 text-xs font-bold text-red-500">{state.fieldErrors.name}</p>
           )}
         </div>
 
@@ -78,7 +78,7 @@ export function ContactForm() {
             placeholder="you@company.com"
           />
           {state.status === "invalid" && state.fieldErrors?.email && (
-            <p className="mt-1 text-xs text-red-500">{state.fieldErrors.email}</p>
+            <p className="mt-1 text-xs font-bold text-red-500">{state.fieldErrors.email}</p>
           )}
         </div>
       </div>
@@ -117,14 +117,14 @@ export function ContactForm() {
           placeholder="Tell us about your project, goals, and timeline..."
         />
         {state.status === "invalid" && state.fieldErrors?.message && (
-          <p className="mt-1 text-xs text-red-500">{state.fieldErrors.message}</p>
+          <p className="mt-1 text-xs font-bold text-red-500">{state.fieldErrors.message}</p>
         )}
       </div>
 
       <button
         type="submit"
         disabled={isPending}
-        className="mt-6 inline-flex w-full items-center justify-center gap-2 bg-black px-4 py-3.5 text-sm font-bold text-white transition-colors hover:bg-neutral-800 disabled:cursor-not-allowed disabled:opacity-70"
+        className="mt-6 inline-flex w-full items-center justify-center gap-2 bg-primary px-4 py-3.5 text-sm font-bold text-white transition-colors hover:bg-primary-shade disabled:cursor-not-allowed disabled:opacity-70"
       >
         {isPending ? "Sending..." : "Send inquiry"}
         <ArrowRightIcon className="h-4 w-4" />
@@ -140,7 +140,7 @@ export function ContactForm() {
         </p>
       )}
       {state.status === "error" && (
-        <p className="mt-4 text-sm font-semibold text-red-500">{state.error}</p>
+        <p className="mt-4 text-sm font-bold text-red-500">{state.error}</p>
       )}
     </form>
   );

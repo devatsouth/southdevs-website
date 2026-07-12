@@ -35,37 +35,52 @@ export default function Home() {
       <SiteHeader />
 
       <main className="flex w-full flex-1 flex-col items-center">
-        <section className="mx-auto flex w-full max-w-4xl flex-col items-center px-4 py-20 text-center sm:px-6 sm:py-28">
-          <HeroBadge>Quality Software Development Services</HeroBadge>
+        <section className="relative w-full">
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-x-0 -top-20 bottom-0 opacity-50"
+            style={{
+              backgroundImage: "radial-gradient(circle, #d1d5db 1px, transparent 1px)",
+              backgroundSize: "28px 28px",
+              maskImage:
+                "radial-gradient(80% 70% at 50% 40%, black 30%, transparent 100%)",
+              WebkitMaskImage:
+                "radial-gradient(80% 70% at 50% 40%, black 30%, transparent 100%)",
+            }}
+          />
 
-          <h1 className="mt-6 text-[2.75rem] font-extrabold leading-[1.1] text-black sm:text-6xl">
-            We build <RotatingServices />
-            <br />
-            to help your business grow.
-          </h1>
+          <div className="relative mx-auto flex w-full max-w-4xl flex-col items-center px-4 py-20 text-center sm:px-6 sm:py-28">
+            <HeroBadge>Quality Software Development Services</HeroBadge>
 
-          <p className="mt-6 max-w-xl text-base text-neutral-500 sm:text-lg">
-            We craft high-quality digital products tailored to your vision — from sleek websites
-            to powerful enterprise systems.
-          </p>
+            <h1 className="mt-6 text-[2.75rem] font-extrabold leading-[1.1] text-black sm:text-6xl">
+              We build <RotatingServices />
+              <br />
+              to help your business grow.
+            </h1>
 
-          <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row">
-            <a
-              href="/contact-us"
-              className="inline-flex w-full items-center justify-center gap-2 bg-black px-5 py-3.5 text-sm font-bold text-white transition-colors hover:bg-neutral-800 sm:w-auto"
-            >
-              Let&apos;s discuss your business
-              <ArrowRightIcon className="h-4 w-4" />
-            </a>
-            <a
-              href="#services"
-              className="inline-flex w-full items-center justify-center border border-black/15 px-5 py-3.5 text-sm font-bold text-black transition-colors hover:bg-neutral-50 sm:w-auto"
-            >
-              Our Services
-            </a>
+            <p className="mt-6 max-w-xl text-base text-neutral-500 sm:text-lg">
+              We craft high-quality digital products tailored to your vision — from sleek
+              websites to powerful enterprise systems.
+            </p>
+
+            <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row">
+              <a
+                href="/contact-us"
+                className="inline-flex w-full items-center justify-center gap-2 bg-primary px-5 py-3.5 text-sm font-bold text-white transition-colors hover:bg-primary-shade sm:w-auto"
+              >
+                Let&apos;s discuss your business
+                <ArrowRightIcon className="h-4 w-4" />
+              </a>
+              <a
+                href="#services"
+                className="inline-flex w-full items-center justify-center border border-black/15 px-5 py-3.5 text-sm font-bold text-black transition-colors hover:bg-neutral-50 sm:w-auto"
+              >
+                Our Services
+              </a>
+            </div>
+
+            <StatsRow />
           </div>
-
-          <StatsRow />
         </section>
 
         <ServicesSection />

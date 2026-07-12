@@ -1,5 +1,8 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import { SocialLinks } from "./social-links";
 
 const NAV_LINKS = [
@@ -8,9 +11,28 @@ const NAV_LINKS = [
   { label: "Clients", href: "/#clients" },
 ];
 
+const SCROLL_THRESHOLD = 24;
+
 export function SiteHeader() {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    function handleScroll() {
+      setScrolled(window.scrollY > SCROLL_THRESHOLD);
+    }
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <header className="sticky top-0 z-20 border-b border-black/5 bg-white/80 backdrop-blur">
+    <header
+      className={`sticky top-0 z-20 border-b transition-all duration-300 ${
+        scrolled
+          ? "border-black/5 bg-white/80 backdrop-blur"
+          : "border-transparent bg-transparent"
+      }`}
+    >
       <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-4 sm:px-6">
         <Link href="/" className="flex items-center gap-1.5 text-xl font-extrabold tracking-tight sm:text-2xl">
           <Image
@@ -35,11 +57,11 @@ export function SiteHeader() {
           ))}
         </nav>
 
-        <div className="flex items-center gap-5">
+        <div className="flex items-center gap-7">
           <SocialLinks className="hidden sm:flex" iconClassName="h-4 w-4 text-neutral-400" />
           <Link
             href="/contact-us"
-            className="inline-flex items-center justify-center bg-black px-4 py-2.5 text-sm font-bold text-white transition-colors hover:bg-neutral-800"
+            className="inline-flex items-center justify-center bg-primary px-4 py-2.5 text-sm font-bold text-white transition-colors hover:bg-primary-shade"
           >
             Contact Us
           </Link>
