@@ -9,9 +9,11 @@ const SOCIALS = [
 export function SocialLinks({
   className = "",
   iconClassName = "",
+  hoverClassName = "hover:text-black",
 }: {
   className?: string;
   iconClassName?: string;
+  hoverClassName?: string;
 }) {
   return (
     <div className={`flex items-center gap-3 ${className}`}>
@@ -22,7 +24,7 @@ export function SocialLinks({
           target="_blank"
           rel="noopener noreferrer"
           aria-label={name}
-          className={`flex items-center justify-center transition-colors hover:text-primary ${iconClassName}`}
+          className={`flex items-center justify-center transition-colors ${hoverClassName} ${iconClassName}`}
         >
           <Icon className="h-full w-full" />
         </a>

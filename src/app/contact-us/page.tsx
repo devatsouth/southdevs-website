@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { ContactForm } from "@/components/contact-form";
-import { SiteBackground } from "@/components/site-background";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { SocialLinks } from "@/components/social-links";
 
 export const revalidate = 3600;
 
@@ -18,20 +18,32 @@ export const metadata: Metadata = {
 export default function ContactUsPage() {
   return (
     <div className="relative flex min-h-screen w-full flex-col">
-      <SiteBackground />
       <SiteHeader />
 
-      <main className="mx-auto flex w-full max-w-[1152px] flex-1 flex-col items-start justify-center px-4 py-10 sm:px-6 sm:py-16">
-        <h1 className="text-[3.125rem] font-extrabold leading-[1.1] text-black sm:text-[3.643rem]">
-          Contact{" "}
-          <span className="relative inline-block text-primary">
-            Us
-            <span
-              aria-hidden
-              className="absolute inset-x-0 top-[0.9em] h-1 border-b border-t border-current"
-            />
-          </span>
-        </h1>
+      <main className="mx-auto flex w-full max-w-6xl flex-1 flex-col items-start gap-12 px-4 py-16 sm:px-6 sm:py-24 lg:flex-row lg:items-center lg:justify-between">
+        <div className="w-full max-w-md">
+          <p className="font-mono text-xs uppercase tracking-widest text-neutral-400">
+            {"// Get in touch"}
+          </p>
+          <h1 className="mt-3 text-4xl font-extrabold leading-[1.1] text-black sm:text-5xl">
+            Let&apos;s build
+            <br />
+            something
+            <br />
+            together.
+          </h1>
+          <p className="mt-5 text-sm text-neutral-500 sm:text-base">
+            Tell us about your project and we&apos;ll get back to you within 24 hours with a free
+            consultation.
+          </p>
+
+          <SocialLinks className="mt-6" iconClassName="flex h-9 w-9 items-center justify-center border border-black/10 p-2 text-neutral-400" />
+
+          <div className="mt-6 inline-flex items-center gap-2 rounded-full border border-black/10 px-3 py-1.5 text-xs text-neutral-500">
+            <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-green-400" />
+            avg. response time: &lt; 24hrs
+          </div>
+        </div>
 
         <ContactForm />
       </main>

@@ -31,6 +31,7 @@ export async function submitContactForm(
   const name = String(formData.get("name") ?? "").trim();
   const email = String(formData.get("email") ?? "").trim();
   const message = String(formData.get("message") ?? "").trim();
+  const projectType = String(formData.get("projectType") ?? "").trim();
 
   const fieldErrors: NonNullable<ContactFormState["fieldErrors"]> = {};
   if (!name) fieldErrors.name = "Please enter your name.";
@@ -60,6 +61,11 @@ export async function submitContactForm(
           <strong>Email address</strong>
         </p>
         <p>${escapeHtml(email)}</p>
+        <br>
+        <p>
+          <strong>Project Type</strong>
+        </p>
+        <p>${escapeHtml(projectType || "Not specified")}</p>
         <p>
           <strong>Message</strong>
         </p>

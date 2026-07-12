@@ -5,13 +5,6 @@ import { ImageResponse } from "next/og";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-const SERVICE_COLORS = {
-  website: "#3498db",
-  mobile: "#e74c3c",
-  software: "#27ae60",
-  system: "#9b59b6",
-};
-
 export default function OpengraphImage() {
   const logoBase64 = readFileSync(
     join(process.cwd(), "public/images/logo-standard.png")
@@ -54,13 +47,7 @@ export default function OpengraphImage() {
             lineHeight: 1.3,
           }}
         >
-          <span>We build&nbsp;</span>
-          <span style={{ color: SERVICE_COLORS.website }}>websites,&nbsp;</span>
-          <span style={{ color: SERVICE_COLORS.mobile }}>mobile apps,&nbsp;</span>
-          <span style={{ color: SERVICE_COLORS.software }}>softwares,&nbsp;</span>
-          <span>and&nbsp;</span>
-          <span style={{ color: SERVICE_COLORS.system }}>custom systems&nbsp;</span>
-          <span>to help your business grow</span>
+          <span>We build websites, mobile apps, software, and custom systems to help your business grow</span>
         </div>
       </div>
     ),

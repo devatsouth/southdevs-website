@@ -11,14 +11,9 @@
   --font-sans: var(--font-montserrat);
   --font-mono: var(--font-source-code-pro);
 
-  --color-primary: #0b1758;
-  --color-primary-shade: #0a144d;
-  --color-primary-tint: #232e69;
-
-  --color-service-website: #3498db;
-  --color-service-mobile: #e74c3c;
-  --color-service-software: #27ae60;
-  --color-service-system: #9b59b6;
+  --color-primary: #0a0a0a;
+  --color-primary-shade: #000000;
+  --color-primary-tint: #262626;
 }
 
 body {

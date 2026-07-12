@@ -1,6 +1,11 @@
 import { ArrowRightIcon } from "@/components/icons";
 import { RotatingServices } from "@/components/rotating-services";
-import { SiteBackground } from "@/components/site-background";
+import { HeroBadge } from "@/components/hero-badge";
+import { StatsRow } from "@/components/stats-row";
+import { ServicesSection } from "@/components/services-section";
+import { WhyUsSection } from "@/components/why-us-section";
+import { ClientsSection } from "@/components/clients-section";
+import { CtaSection } from "@/components/cta-section";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 
@@ -27,30 +32,48 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <SiteBackground />
       <SiteHeader />
 
-      <main className="mx-auto flex w-full max-w-6xl flex-1 flex-col items-start justify-center px-4 py-10 sm:px-6 sm:py-16">
-        <h1 className="max-w-3xl text-[3.125rem] font-extrabold leading-[1.1] text-black sm:text-[3.643rem]">
-          <span>We build</span>{" "}
-          <RotatingServices />
-          <br />
-          <span>
-            to help your
-            <br />
-            business grow
-          </span>
-        </h1>
+      <main className="flex w-full flex-1 flex-col items-center">
+        <section className="mx-auto flex w-full max-w-4xl flex-col items-center px-4 py-20 text-center sm:px-6 sm:py-28">
+          <HeroBadge>Quality Software Development Services</HeroBadge>
 
-        <a
-          href="/contact-us"
-          className="mt-8 inline-flex w-full items-center justify-center gap-2 bg-primary px-4 py-4 font-mono text-sm font-bold text-white transition-colors hover:bg-primary-shade sm:w-fit sm:justify-start"
-        >
-          Book a free consultation
-          <ArrowRightIcon className="h-4 w-4" />
-        </a>
+          <h1 className="mt-6 text-[2.75rem] font-extrabold leading-[1.1] text-black sm:text-6xl">
+            We build <RotatingServices />
+            <br />
+            to help your business grow.
+          </h1>
+
+          <p className="mt-6 max-w-xl text-base text-neutral-500 sm:text-lg">
+            We craft high-quality digital products tailored to your vision — from sleek websites
+            to powerful enterprise systems.
+          </p>
+
+          <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row">
+            <a
+              href="/contact-us"
+              className="inline-flex w-full items-center justify-center gap-2 bg-black px-5 py-3.5 text-sm font-bold text-white transition-colors hover:bg-neutral-800 sm:w-auto"
+            >
+              Let&apos;s discuss your business
+              <ArrowRightIcon className="h-4 w-4" />
+            </a>
+            <a
+              href="#services"
+              className="inline-flex w-full items-center justify-center border border-black/15 px-5 py-3.5 text-sm font-bold text-black transition-colors hover:bg-neutral-50 sm:w-auto"
+            >
+              Our Services
+            </a>
+          </div>
+
+          <StatsRow />
+        </section>
+
+        <ServicesSection />
+        <WhyUsSection />
+        <ClientsSection />
       </main>
 
+      <CtaSection />
       <SiteFooter />
     </div>
   );
