@@ -3,6 +3,7 @@
 import { useRef, useState, useTransition } from "react";
 import { submitContactForm, type ContactFormState } from "@/app/contact-us/actions";
 import { ArrowRightIcon } from "./icons";
+import { TurnstileWidget, type TurnstileHandle } from "./turnstile-widget";
 
 const initialState: ContactFormState = { status: "idle" };
 const BANNER_DURATION_MS = 5000;
@@ -16,8 +17,10 @@ const fieldClassName =
 export function ContactForm() {
   const [state, setState] = useState<ContactFormState>(initialState);
   const [projectType, setProjectType] = useState(PROJECT_TYPES[0]);
+  const [turnstileToken, setTurnstileToken] = useState("");
   const [isPending, startTransition] = useTransition();
   const formRef = useRef<HTMLFormElement>(null);
+  const turnstileRef = useRef<TurnstileHandle>(null);
   const hideTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   function handleAction(formData: FormData) {
@@ -30,6 +33,14 @@ export function ContactForm() {
       if (result.status === "success") {
         formRef.current?.reset();
         setProjectType(PROJECT_TYPES[0]);
+      }
+      if (
+        result.status === "success" ||
+        result.status === "error" ||
+        (result.status === "invalid" && result.fieldErrors?.captcha)
+      ) {
+        setTurnstileToken("");
+        turnstileRef.current?.reset();
       }
       if (result.status === "success" || result.status === "error") {
         hideTimeoutRef.current = setTimeout(() => {
@@ -46,6 +57,7 @@ export function ContactForm() {
       className="w-full max-w-[520px] border border-black/10 p-6 sm:p-8"
     >
       <input type="hidden" name="projectType" value={projectType} />
+      <input type="hidden" name="turnstileToken" value={turnstileToken} />
 
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <div>
@@ -121,9 +133,20 @@ export function ContactForm() {
         )}
       </div>
 
+      <div className="mt-4">
+        <TurnstileWidget
+          ref={turnstileRef}
+          onVerify={setTurnstileToken}
+          onExpire={() => setTurnstileToken("")}
+        />
+        {state.status === "invalid" && state.fieldErrors?.captcha && (
+          <p className="mt-1 text-xs font-bold text-red-500">{state.fieldErrors.captcha}</p>
+        )}
+      </div>
+
       <button
         type="submit"
-        disabled={isPending}
+        disabled={isPending || !turnstileToken}
         className="mt-6 inline-flex w-full items-center justify-center gap-2 bg-primary px-4 py-3.5 text-sm font-bold text-white transition-colors hover:bg-primary-shade disabled:cursor-not-allowed disabled:opacity-70"
       >
         {isPending ? "Sending..." : "Send inquiry"}
