@@ -2,7 +2,7 @@
 
 import { getAdminFirestore } from "@/lib/firebase-admin";
 
-const CONTACT_EMAIL = "dev@southdevs.net";
+const CONTACT_EMAIL = "contact@southdevs.net";
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const TURNSTILE_SECRET_KEY = process.env.TURNSTILE_SECRET_KEY;
 
